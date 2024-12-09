@@ -10,7 +10,7 @@ This is a simple A/B testing web application built using Flask. The application 
 - **Homepage**: A static homepage introducing the web app.
 - **Version A and Version B**: Users are randomly assigned to either version A or B of the user page.
 - **Interaction Tracking**: Users can interact with the page, and their interactions (including IP address, timestamp, and version) are logged in both a text file and a SQLite database.
-- **Session Stickiness**: Once a user is assigned to a version, they will consistently see the same version throughout their session.
+- **Session Stickiness**: Once a user is assigned to a version, they will consistently see the same version throughout their session, unless they reurn to the homepage to get new assignment. 
 - **Log File**: Interaction details are stored in an `interaction_log.txt` file.
 - **Database**: Interaction details are also stored in a SQLite database `interactions.db`.
 
