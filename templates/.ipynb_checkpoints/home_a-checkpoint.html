@@ -1,0 +1,43 @@
+<!-- home_a.html and home_b.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Version A</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Welcome to Home Page Version A</h1>
+    <p>Click the button below to track your interaction.</p>
+    
+    <button id="trackBtn">Click Me!</button>
+
+    <h2>Interaction Log:</h2>
+    <ul id="interactionLog">
+        {% for interaction in interaction_data %}
+            <li>{{ interaction }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('go_back') }}">
+        <button>Go Back to Homepage</button>
+    </a>
+
+    <script>
+        document.getElementById('trackBtn').addEventListener('click', function() {
+            // Send a POST request to track the interaction
+            fetch('/track', { method: 'POST' })
+                .then(response => response.text())
+                .then(data => {
+                    // Update the interaction log with the new data
+                    const interactionLog = document.getElementById('interactionLog');
+                    const newLogItem = document.createElement('li');
+                    newLogItem.textContent = data; // The server response, containing timestamp, IP, and version
+                    interactionLog.appendChild(newLogItem);
+                })
+                .catch(error => console.error('Error tracking interaction:', error));
+        });
+    </script>
+</body>
+</html>

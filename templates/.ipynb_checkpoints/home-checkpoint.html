@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Web App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Web App!</h1>
+    </header>
+    <main>
+        <p>This is a simple web app where you'll be shown different versions of the homepage based on A/B testing.</p>
+        <a href="{{ url_for('home_page') }}">
+            <button>Go to Home</button>
+        </a>
+    </main>
+</body>
+</html>
